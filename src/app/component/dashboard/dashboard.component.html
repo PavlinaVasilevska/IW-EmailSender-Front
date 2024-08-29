@@ -1,0 +1,31 @@
+<div *ngIf="authService.isLoggedIn(); else loginMessage" class="dashboard-container">
+  <header class="dashboard-header">
+    <h1 class="header-title">Email Jobs</h1>
+  </header>
+
+  <section *ngIf="emailJobs.length > 0; else noJobs" class="email-jobs-list">
+    <ol class="email-jobs-list-ol">
+      <li *ngFor="let job of emailJobs; let i = index" class="email-job-card">
+        <div class="card-content">
+          <h3 class="email-template-uuid">Email Job with UUID: {{ job.emailTemplate.uuid }}</h3>
+          <p class="start-date"><strong>Start Date:</strong> {{ job.startDate }}</p>
+          <p class="end-date"><strong>End Date:</strong> {{ job.endDate || 'N/A' }}</p>
+          <p class="status"><strong>Status:</strong> {{ job.enabled ? 'Enabled' : 'Disabled' }}</p>
+          <button class="view-details-button" (click)="viewEmailJob(job.uuid)">View Details</button>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <ng-template #noJobs>
+    <p class="no-jobs-message">No email jobs available.</p>
+  </ng-template>
+
+  <button class="create-job-button" (click)="router.navigate(['/create-email-job'])">Create New Job</button>
+</div>
+
+<ng-template #loginMessage>
+  <div class="login-message">
+    <p>Please log in to view the email jobs.</p>
+  </div>
+</ng-template>
