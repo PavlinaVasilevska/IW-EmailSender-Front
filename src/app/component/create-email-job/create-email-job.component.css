@@ -1,1 +1,100 @@
-/*dddA*/
+/* Container for the form */
+.create-email-job-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the form */
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Style for the form */
+.create-job-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for each form group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Input and select field styling */
+.form-group input[type="text"],
+.form-group input[type="datetime-local"],
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Checkbox styling */
+.form-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Error message styling */
+.error {
+  color: #d9534f;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Success message styling */
+.success-message {
+  color: #28a745; /* Green color for success */
+  font-size: 16px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Button styling */
+button[type="submit"],
+.back-button {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+}
+
+button[type="submit"]:not(:disabled):hover,
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+
+.button-container {
+  text-align: center;
+}
+
+.back-button {
+  margin-top: 20px;
+}
+
+.back-button:hover {
+  background-color: #004494;
+}

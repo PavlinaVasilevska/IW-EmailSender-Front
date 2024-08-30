@@ -18,7 +18,7 @@ export interface EmailJobDTO {
   sender: {
     uuid: string;
   };
-  receivers: string[];
+  receivers: string;
   frequency: FrequencyEnum;
   occurrences: OccurrenceDTO[];
 }

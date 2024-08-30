@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmailJobService } from '../../services/email-job.service';
 import { OccurrenceService } from '../../services/occurrence.service';
-import { EmailJobDTO } from '../../models/email-job.dto.model';
-import { OccurrenceDTO } from '../../models/occurrence.dto.model';
+import { EmailJobDTO, FrequencyEnum } from '../../models/email-job.dto.model';
+import { OccurrenceDTO, StatusEnum } from '../../models/occurrence.dto.model';
 
 @Component({
   selector: 'app-email-job-details',
@@ -13,8 +13,10 @@ import { OccurrenceDTO } from '../../models/occurrence.dto.model';
 export class EmailJobDetailsComponent implements OnInit {
   emailJob: EmailJobDTO | null = null;
   occurrences: OccurrenceDTO[] = [];
+  selectedOccurrence: OccurrenceDTO | null = null;
   showOccurrences = false;
   errorMessage: string | null = null;
+  StatusEnum = StatusEnum; // Expose StatusEnum to the template
 
   constructor(
     private emailJobService: EmailJobService,
@@ -32,11 +34,8 @@ export class EmailJobDetailsComponent implements OnInit {
     if (uuid) {
       this.emailJobService.getEmailJobByUuid(uuid).subscribe(
         (job: EmailJobDTO) => {
+          console.log('Fetched email job:', job);
           this.emailJob = job;
-          // Load occurrences if needed
-          if (this.showOccurrences) {
-            this.loadOccurrences();
-          }
         },
         error => {
           console.error('Error fetching email job details', error);
@@ -48,21 +47,12 @@ export class EmailJobDetailsComponent implements OnInit {
     }
   }
 
-  toggleOccurrences(): void {
-    this.showOccurrences = !this.showOccurrences;
-    if (this.showOccurrences && this.emailJob) {
-      this.loadOccurrences();
-    } else {
-      // Clear occurrences if hiding them
-      this.occurrences = [];
-    }
-  }
-
-  private loadOccurrences(): void {
+  viewOccurrencesDetails(): void {
     if (this.emailJob) {
       this.occurrenceService.getOccurrencesByEmailJob(this.emailJob.uuid).subscribe(
         (occurrences: OccurrenceDTO[]) => {
           this.occurrences = occurrences;
+          this.showOccurrences = true;
         },
         error => {
           console.error('Error fetching occurrences', error);
@@ -74,5 +64,20 @@ export class EmailJobDetailsComponent implements OnInit {
 
   backToDashboard(): void {
     this.router.navigate(['/dashboard']);
+  }
+
+  getFrequencyDisplay(frequency: FrequencyEnum): string {
+    const frequencyMap: { [key in FrequencyEnum]: string } = {
+      [FrequencyEnum.DAILY]: 'Daily',
+      [FrequencyEnum.WEEKLY]: 'Weekly',
+      [FrequencyEnum.MONTHLY]: 'Monthly',
+      [FrequencyEnum.YEARLY]: 'Yearly'
+    };
+    return frequencyMap[frequency] || 'Unknown';
+  }
+
+  goToOccurrenceDetails(occurrence: OccurrenceDTO): void {
+    this.selectedOccurrence = occurrence;
+    this.router.navigate(['/occurrence-details', occurrence.uuid]);
   }
 }

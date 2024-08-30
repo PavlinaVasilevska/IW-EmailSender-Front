@@ -1,80 +1,78 @@
-/* Apply styles to the entire login container */
+
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #e9dddd; /* Light background for contrast */
+  background-color: #e9dddd;
 }
 
-/* Style for the card containing the login form */
+
 .login-card {
   width: 100%;
   max-width: 600px;
-  padding: 70px; /* Increased padding */
-  border-radius: 16px; /* Rounded corners */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
-  background-color: #ffffff; /* White background */
+  padding: 70px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content horizontally */
+  align-items: center;
 }
 
-/* Center the form and its fields */
+
 .login-card form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center form fields horizontally */
+  align-items: center;
 }
 
-/* Style for material form fields */
+
 .mat-form-field {
   width: 150%;
-  max-width: 400px; /* Set a max-width for better centering */
-  margin-bottom: 28px; /* Increased margin for spacing */
+  max-width: 400px;
+  margin-bottom: 28px;
 }
 
-/* Ensure input elements inside mat-form-field have larger text */
 .mat-form-field input.mat-input-element {
-  font-size: 1.6rem; /* Larger text size for better readability */
-  padding: 20px; /* Increased padding for input fields */
-  border-radius: 8px; /* Rounded borders for input fields */
+  font-size: 1.6rem;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-/* Style for material labels */
 .mat-form-field mat-label {
-  font-size: 1.5rem; /* Larger label text */
-  color: #333; /* Darker color for better contrast */
+  font-size: 1.5rem;
+  color: #333;
 }
 
-/* Style for error messages */
+
 .mat-form-field mat-error {
-  font-size: 1.2rem; /* Larger font size for error messages */
-  color: #f44336; /* Red color for error */
+  font-size: 1.2rem;
+  color: #f44336;
 }
 
-/* General error message styling */
+
 .error-message {
-  color: #f44336; /* Red color for errors */
-  margin: 16px 0; /* Margins around error message */
-  font-size: 1.2rem; /* Larger text for error messages */
+  color: #f44336;
+  margin: 16px 0;
+  font-size: 1.2rem;
   text-align: center;
 }
 
-/* Style for login button */
+
 .login-button {
   width: 100%;
-  max-width: 400px; /* Set a max-width for better centering */
-  height: 60px; /* Taller button */
-  font-size: 1.2rem; /* Larger font size */
-  border-radius: 8px; /* Rounded button corners */
-  background-color: #3f51b5; /* Primary color */
-  color: #fff; /* White text */
+  max-width: 400px;
+  height: 60px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background-color: #3f51b5;
+  color: #fff;
 }
 
 .login-button:hover {
-  background-color: #c7c9ec; /* Darker shade on hover */
+  background-color: #c7c9ec;
 }
 body > div > div > mat-card > mat-card-header > div > mat-card-title
 {

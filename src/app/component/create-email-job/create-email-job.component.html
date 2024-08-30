@@ -1,1 +1,76 @@
-<p>create-email-job works!</p>
+<div class="create-email-job-container">
+  <h1 class="title">Create New Email Job</h1>
+
+  <form [formGroup]="emailJobForm" (ngSubmit)="onSubmit()" class="create-job-form">
+    <div class="form-group">
+      <label for="startDate">Start Date:</label>
+      <input type="datetime-local" id="startDate" formControlName="startDate" />
+      <div *ngIf="emailJobForm.get('startDate')?.invalid && (emailJobForm.get('startDate')?.touched || emailJobForm.get('startDate')?.dirty)" class="error">
+        <p *ngIf="emailJobForm.get('startDate')?.errors?.['required']">Start Date is required.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="endDate">End Date:</label>
+      <input type="datetime-local" id="endDate" formControlName="endDate" />
+    </div>
+
+    <div class="form-group">
+      <label for="enabled">Enabled:</label>
+      <input type="checkbox" id="enabled" formControlName="enabled" />
+    </div>
+
+    <div class="form-group">
+      <label for="emailTemplateUuid">Email Template UUID:</label>
+      <input type="text" id="emailTemplateUuid" formControlName="emailTemplateUuid" />
+      <div *ngIf="emailJobForm.get('emailTemplateUuid')?.invalid && (emailJobForm.get('emailTemplateUuid')?.touched || emailJobForm.get('emailTemplateUuid')?.dirty)" class="error">
+        <p *ngIf="emailJobForm.get('emailTemplateUuid')?.errors?.['required']">Email Template UUID is required.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="senderUuid">Sender UUID:</label>
+      <input type="text" id="senderUuid" formControlName="senderUuid" />
+      <div *ngIf="emailJobForm.get('senderUuid')?.invalid && (emailJobForm.get('senderUuid')?.touched || emailJobForm.get('senderUuid')?.dirty)" class="error">
+        <p *ngIf="emailJobForm.get('senderUuid')?.errors?.['required']">Sender UUID is required.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="receivers">Receivers:</label>
+      <input type="text" id="receivers" formControlName="receivers" />
+      <div *ngIf="emailJobForm.get('receivers')?.invalid && (emailJobForm.get('receivers')?.touched || emailJobForm.get('receivers')?.dirty)" class="error">
+        <p *ngIf="emailJobForm.get('receivers')?.errors?.['required']">Receivers are required.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="frequency">Frequency:</label>
+      <select id="frequency" formControlName="frequency">
+        <option [value]="FrequencyEnum.DAILY">Daily</option>
+        <option [value]="FrequencyEnum.WEEKLY">Weekly</option>
+        <option [value]="FrequencyEnum.MONTHLY">Monthly</option>
+        <option [value]="FrequencyEnum.YEARLY">Yearly</option>
+      </select>
+      <div *ngIf="emailJobForm.get('frequency')?.invalid && (emailJobForm.get('frequency')?.touched || emailJobForm.get('frequency')?.dirty)" class="error">
+        <p *ngIf="emailJobForm.get('frequency')?.errors?.['required']">Frequency is required.</p>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="emailJobForm.invalid">Create Job</button>
+  </form>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div class="button-container">
+    <button class="back-button" (click)="backToDashboard()">Back to Dashboard</button>
+  </div>
+</div>

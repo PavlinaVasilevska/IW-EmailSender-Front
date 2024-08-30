@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { EmailJobDTO } from '../models/email-job.dto.model'; // Ensure correct path
+import { EmailJobDTO } from '../models/email-job.dto.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailJobService {
-  private apiUrl = 'http://localhost:8080/api/emailjobs'; // Ensure this matches your backend endpoint
-
+  private apiUrl = 'http://localhost:8080/api/emailjobs';
   constructor(private http: HttpClient) {}
 
   getAllEmailJobs(): Observable<EmailJobDTO[]> {
