@@ -4,7 +4,7 @@
   <form [formGroup]="emailJobForm" (ngSubmit)="onSubmit()" class="create-job-form">
     <div class="form-group">
       <label for="startDate">Start Date:</label>
-      <input type="datetime-local" id="startDate" formControlName="startDate" />
+      <input type="date" id="startDate" formControlName="startDate" class="date-input"/>
       <div *ngIf="emailJobForm.get('startDate')?.invalid && (emailJobForm.get('startDate')?.touched || emailJobForm.get('startDate')?.dirty)" class="error">
         <p *ngIf="emailJobForm.get('startDate')?.errors?.['required']">Start Date is required.</p>
       </div>
@@ -12,7 +12,7 @@
 
     <div class="form-group">
       <label for="endDate">End Date:</label>
-      <input type="datetime-local" id="endDate" formControlName="endDate" />
+      <input type="date" id="endDate" formControlName="endDate" class="date-input"/>
     </div>
 
     <div class="form-group">
@@ -21,10 +21,14 @@
     </div>
 
     <div class="form-group">
-      <label for="emailTemplateUuid">Email Template UUID:</label>
-      <input type="text" id="emailTemplateUuid" formControlName="emailTemplateUuid" />
+      <label for="emailTemplateUuid">Email Template:</label>
+      <select id="emailTemplateUuid" formControlName="emailTemplateUuid">
+        <option *ngFor="let template of emailTemplates" [value]="template.uuid">
+          {{ template.subject }}
+        </option>
+      </select>
       <div *ngIf="emailJobForm.get('emailTemplateUuid')?.invalid && (emailJobForm.get('emailTemplateUuid')?.touched || emailJobForm.get('emailTemplateUuid')?.dirty)" class="error">
-        <p *ngIf="emailJobForm.get('emailTemplateUuid')?.errors?.['required']">Email Template UUID is required.</p>
+        <p *ngIf="emailJobForm.get('emailTemplateUuid')?.errors?.['required']">Email Template is required.</p>
       </div>
     </div>
 

@@ -21,7 +21,7 @@ export class LoginComponent {
       this.errorMessage = null;
       this.authService.login(this.username, this.password).pipe(
         tap((response) => {
-          localStorage.setItem('access_token', response.accessToken);
+          // localStorage.setItem('access_token', response.accessToken);
           this.router.navigate(['/dashboard']);
         }),
         catchError((error) => {

@@ -16,7 +16,7 @@ export class EmailJobDetailsComponent implements OnInit {
   selectedOccurrence: OccurrenceDTO | null = null;
   showOccurrences = false;
   errorMessage: string | null = null;
-  StatusEnum = StatusEnum; // Expose StatusEnum to the template
+  StatusEnum = StatusEnum;
 
   constructor(
     private emailJobService: EmailJobService,
@@ -53,12 +53,26 @@ export class EmailJobDetailsComponent implements OnInit {
         (occurrences: OccurrenceDTO[]) => {
           this.occurrences = occurrences;
           this.showOccurrences = true;
+          if (occurrences.length === 0) {
+            this.errorMessage = 'No occurrences available.';
+          } else {
+            this.errorMessage = null;
+          }
         },
         error => {
           console.error('Error fetching occurrences', error);
           this.errorMessage = 'Failed to load occurrences.';
         }
       );
+    }
+  }
+
+  toggleOccurrencesDetails(): void {
+    if (!this.showOccurrences) {
+      this.viewOccurrencesDetails();
+    } else {
+      this.showOccurrences = false;
+      this.errorMessage = null;
     }
   }
 

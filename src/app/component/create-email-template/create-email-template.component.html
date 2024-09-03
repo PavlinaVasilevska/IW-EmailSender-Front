@@ -1,0 +1,38 @@
+<div class="create-email-template-container">
+  <h1 class="title">Create New Email Template</h1>
+
+  <form [formGroup]="emailTemplateForm" (ngSubmit)="onSubmit()" class="create-template-form">
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" formControlName="subject" />
+      <div *ngIf="emailTemplateForm.get('subject')?.invalid && (emailTemplateForm.get('subject')?.touched || emailTemplateForm.get('subject')?.dirty)" class="error">
+        <p *ngIf="emailTemplateForm.get('subject')?.errors?.['required']">Subject is required.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Body:</label>
+      <textarea id="body" formControlName="body"></textarea>
+      <div *ngIf="emailTemplateForm.get('body')?.invalid && (emailTemplateForm.get('body')?.touched || emailTemplateForm.get('body')?.dirty)" class="error">
+        <p *ngIf="emailTemplateForm.get('body')?.errors?.['required']">Body is required.</p>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="emailTemplateForm.invalid">Create Template</button>
+  </form>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Back to Dashboard Button -->
+  <div class="button-container">
+    <button (click)="goToDashboard()" class="back-button">Back to Dashboard</button>
+  </div>
+</div>

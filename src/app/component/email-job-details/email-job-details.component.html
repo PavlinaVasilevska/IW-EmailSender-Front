@@ -10,31 +10,17 @@
     <p><strong>Receivers:</strong> {{ emailJob.receivers }}</p>
     <p><strong>Frequency:</strong> {{ getFrequencyDisplay(emailJob.frequency) }}</p>
 
-    <!-- If occurrence details are selected, display them here -->
-    <div *ngIf="selectedOccurrence; else occurrenceList">
-      <h2 class="subheading">Occurrence Details</h2>
-      <p><strong>UUID:</strong> {{ selectedOccurrence.uuid }}</p>
-      <p><strong>Date:</strong> {{ selectedOccurrence.createdOn | date: 'short' }}</p> <!-- Display createdOn date -->
-      <p><strong>Status:</strong>
-        <span [ngClass]="{
-          'status': true,
-          'success': selectedOccurrence.status === StatusEnum.SUCCESS,
-          'failed': selectedOccurrence.status !== StatusEnum.SUCCESS
-        }">
-          {{ selectedOccurrence.status }}
-        </span>
-      </p>
-      <p><strong>Error Description:</strong> {{ selectedOccurrence.errorDescription || 'None' }}</p>
-    </div>
+    <button class="view-button" (click)="toggleOccurrencesDetails()">
+      {{ showOccurrences ? 'Cancel Occurrence' : 'View Occurrences Details' }}
+    </button>
 
-    <!-- Display list of occurrences if no specific occurrence is selected -->
-    <ng-template #occurrenceList>
-      <button class="view-button" (click)="viewOccurrencesDetails()">View Occurrences Details</button>
-      <div *ngIf="showOccurrences && occurrences.length > 0">
+
+    <div *ngIf="showOccurrences">
+      <div *ngIf="occurrences && occurrences.length > 0; else noOccurrencesMessage">
         <h2 class="subheading">Occurrences</h2>
         <ul>
           <li *ngFor="let occurrence of occurrences">
-            <p><strong>Date:</strong> {{ occurrence.createdOn | date: 'short' }}</p> <!-- Display createdOn date -->
+            <p><strong>Date:</strong> {{ occurrence.createdOn | date: 'short' }}</p>
             <p><strong>Status:</strong>
               <span [ngClass]="{
                 'status': true,
@@ -44,19 +30,23 @@
                 {{ occurrence.status }}
               </span>
             </p>
-            <p><strong>Error Description:</strong> {{ occurrence.errorDescription }}</p>
+            <p *ngIf="occurrence.status !== StatusEnum.SUCCESS && occurrence.errorDescription"><strong>Error Description:</strong> {{ occurrence.errorDescription }}</p>
           </li>
         </ul>
       </div>
-    </ng-template>
+      <ng-template #noOccurrencesMessage>
+        <p>No occurrences available.</p>
+      </ng-template>
+    </div>
   </div>
 
-  <!-- Back to Dashboard Button -->
+
   <button class="back-button" (click)="backToDashboard()">Back to Dashboard</button>
 </div>
 
+
 <ng-template #loading>
   <div class="loading">
-    <p>Loading...</p>
+    <p>Loading email job details...</p>
   </div>
 </ng-template>

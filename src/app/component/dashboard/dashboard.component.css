@@ -1,140 +1,161 @@
 .dashboard-container {
-  padding: 20px;
+  padding: 40px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
-  background-color: #f0f4f8;
+  background-color: #eef2f7;
   min-height: 100vh;
-  position: relative; /* Allow positioning of the button */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dashboard-header {
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #9d9ce9, #f4f6f4);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
 }
 
 .header-title {
-  font-size: 24px;
-  color: #333;
+  font-size: 32px;
+  color: #ffffff;
   margin: 0;
+  font-weight: 700;
 }
 
 .email-jobs-list {
-  margin-top: 20px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 900px;
 }
 
 .email-jobs-list-ol {
   padding-left: 0;
   list-style-type: none;
-  counter-reset: job-counter;
 }
 
 .email-jobs-list-ol li {
   position: relative;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  transition: transform 0.3s ease;
+  margin-bottom: 30px;
+  padding: 25px;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .email-jobs-list-ol li:hover {
-  transform: scale(1.02);
-}
-
-.email-jobs-list-ol li::before {
-  content: counter(job-counter);
-  counter-increment: job-counter;
-  position: absolute;
-  left: -50px;
-  top: 20px;
-  font-size: 30px;
-  font-weight: bold;
-  color: #007bff;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .card-content {
-  margin-left: 50px;
+  margin-left: 0;
 }
 
 .email-template-uuid {
-  margin: 0 0 10px 0;
-  font-size: 18px;
-  color: #333;
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 .email-job-card p {
-  margin: 8px 0;
+  margin: 10px 0;
+  font-size: 17px;
+  line-height: 1.5;
 }
 
 .email-job-card .start-date,
 .email-job-card .end-date,
 .email-job-card .status {
-  font-size: 16px;
-  font-weight: bold;
-  color: #555;
-}
-
-.email-job-card .start-date {
-  margin-bottom: 12px;
-}
-
-.email-job-card .end-date {
-  margin-bottom: 12px;
+  font-weight: 500;
+  color: #7f8c8d;
 }
 
 .email-job-card .status {
-  margin-bottom: 12px;
-  color: #007bff;
+  margin-bottom: 20px;
+  color: #9d9ce9;
 }
 
 .view-details-button {
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 14px 32px;
+  font-size: 16px;
   color: #ffffff;
-  background-color: #28a745;
+  background-color: #9d9ce9;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .view-details-button:hover {
-  background-color: #218838;
-  transform: scale(1.05);
+  background-color: #7c7bd4;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .no-jobs-message {
-  font-size: 16px;
-  color: #666;
+  font-size: 20px;
+  color: #95a5a6;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .login-message {
   text-align: center;
-  font-size: 18px;
-  color: #666;
+  font-size: 22px;
+  color: #95a5a6;
   margin-top: 50px;
 }
 
-.create-job-button {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 24px;
-  font-size: 16px;
+/* Create Email Template Button Styles */
+.create-template-button {
+  position: fixed;
+  left: 30px;
+  bottom: 30px;
+  padding: 16px 36px;
+  font-size: 20px;
   color: #ffffff;
-  background-color: #007bff;
+  background: linear-gradient(135deg, #9d9ce9, #7c7bd4);
   border: none;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.create-template-button:hover {
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Create Email Job Button Styles */
+.create-job-button {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  padding: 16px 36px;
+  font-size: 20px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #9d9ce9, #7c7bd4);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .create-job-button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }

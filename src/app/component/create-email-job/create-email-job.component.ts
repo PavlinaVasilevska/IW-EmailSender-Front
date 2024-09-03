@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailJobDTO, FrequencyEnum } from '../../models/email-job.dto.model';
 import { EmailJobService } from '../../services/email-job.service';
-import {Router} from "@angular/router";
+import { EmailTemplateService } from '../../services/email-template.service';
+import { Router } from '@angular/router';
+import {EmailTemplateDTO} from "../../models/email-template.dto.model";
+
 
 @Component({
   selector: 'app-create-email-job',
@@ -12,12 +15,14 @@ import {Router} from "@angular/router";
 export class CreateEmailJobComponent implements OnInit {
   emailJobForm: FormGroup;
   FrequencyEnum = FrequencyEnum;
+  emailTemplates: EmailTemplateDTO[] = [];
   successMessage: string = '';
   errorMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private emailJobService: EmailJobService,
+    private emailTemplateService: EmailTemplateService,
     private router: Router
   ) {
     this.emailJobForm = this.formBuilder.group({
@@ -31,7 +36,16 @@ export class CreateEmailJobComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadEmailTemplates();
+  }
+
+  loadEmailTemplates(): void {
+    this.emailTemplateService.getAllEmailTemplates().subscribe(
+      templates => this.emailTemplates = templates,
+      error => this.errorMessage = 'Failed to load email templates.'
+    );
+  }
 
   onSubmit(): void {
     if (this.emailJobForm.valid) {
@@ -50,7 +64,7 @@ export class CreateEmailJobComponent implements OnInit {
         },
         receivers: receivers,
         frequency: this.emailJobForm.get('frequency')?.value as FrequencyEnum,
-        occurrences: []  // Ensure this matches the expected type
+        occurrences: []
       };
 
       this.emailJobService.createEmailJob(newJob).subscribe(

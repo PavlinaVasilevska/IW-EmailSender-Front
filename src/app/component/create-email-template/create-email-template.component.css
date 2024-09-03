@@ -1,0 +1,106 @@
+.create-email-template-container {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef2f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center; /* Center content */
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.create-template-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #9d9ce9;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #7c7bd4;
+  transform: translateY(-2px);
+}
+
+.success-message, .error-message {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.success-message {
+  color: #2ecc71;
+}
+
+.error-message {
+  color: #e74c3c;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.back-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #9d9ce9;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+  background-color: #7c7bd4;
+  transform: translateY(-3px);
+}
+
+.back-button:active {
+  background-color: #8887d7;
+  transform: translateY(1px);
+}
