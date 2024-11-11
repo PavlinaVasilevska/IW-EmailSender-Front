@@ -37,7 +37,7 @@
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group select {
-  width: calc(100% - 24px); /* Adjust width to fit padding */
+  width: calc(100% - 24px);
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -62,25 +62,25 @@
 /* Button Styling */
 button[type="submit"],
 .back-button {
-  font-size: 18px; /* Larger font size */
-  padding: 18px 38px; /* More padding for bigger buttons */
-  border-radius: 15px; /* Rounded corners */
+  font-size: 18px;
+  padding: 18px 38px;
+  border-radius: 15px;
   font-weight: 500;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  background: linear-gradient(135deg, #9d9ce9, #7c7bd4); /* Gradient background */
-  color: #fff; /* Text color */
-  border: none; /* Remove borders */
+  background: linear-gradient(135deg, #9d9ce9, #7c7bd4);
+  color: #fff;
+  border: none;
   position: relative;
   overflow: hidden;
 }
 
 button[type="submit"]:hover,
 .back-button:hover {
-  background: linear-gradient(135deg, #d3d2fd, #c7c6ee); /* Lighter gradient on hover */
-  transform: translateY(-3px); /* Hover effect for lift */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 button[type="submit"]:active,
@@ -116,7 +116,7 @@ button[type="submit"]:hover::before,
 
 .button-container {
   text-align: center;
-  gap: 10px; /* Reduced gap between buttons to fully match the spacing */
+  gap: 10px;
 }
 
 /* Responsive Styling */
@@ -129,9 +129,9 @@ button[type="submit"]:hover::before,
   button[type="submit"],
   .back-button {
     width: 100%;
-    margin-bottom: 10px; /* Add spacing between stacked buttons */
-    font-size: 16px; /* Slightly smaller text for mobile */
-    padding: 14px 20px; /* Adjust padding for mobile */
+    margin-bottom: 10px;
+    font-size: 16px;
+    padding: 14px 20px;
   }
 
   .title {
