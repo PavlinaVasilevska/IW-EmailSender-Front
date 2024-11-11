@@ -23,6 +23,7 @@ import { CreateEmailJobComponent } from './component/create-email-job/create-ema
 import { OccurrenceDetailsComponent } from './component/occurrence-details/occurrence-details.component';
 import { CreateEmailTemplateComponent } from './component/create-email-template/create-email-template.component';
 import { ManageUsersComponent } from './component/manage-users/manage-users.component';
+import { AddUserComponent } from './component/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ManageUsersComponent } from './component/manage-users/manage-users.comp
     OccurrenceDetailsComponent,
     CreateEmailTemplateComponent,
     ManageUsersComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
