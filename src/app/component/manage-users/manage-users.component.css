@@ -44,34 +44,34 @@ div[mat-spinner] {
 /* Button Group Styling */
 .button-group {
   display: flex;
-  justify-content: space-between; /* Space buttons on the left and right */
-  margin-top: 20px;  /* Adds space between the table and buttons */
-  gap: 10px; /* Reduced gap between buttons */
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
 }
 
 .button-group button {
-  font-size: 18px; /* Increased font size for bigger text */
-  padding: 18px 38px; /* Increased padding for bigger buttons */
-  border-radius: 15px; /* Match the rounded corners */
+  font-size: 18px;
+  padding: 18px 38px;
+  border-radius: 15px;
   font-weight: 500;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   background: linear-gradient(135deg, #9d9ce9, #7c7bd4); /* Match the gradient background */
-  color: #fff; /* Text color for buttons */
-  border: none; /* Remove borders */
+  color: #fff;
+  border: none;
 }
 
 .button-group button:hover {
-  background: linear-gradient(135deg, #d3d2fd, #c7c6ee); /* Lighter gradient on hover */
-  transform: translateY(-3px); /* Button hover effect */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Optional: Additional customization for specific button colors */
+
 .button-group button[color="primary"]:hover,
 .button-group button[color="accent"]:hover {
-  background: linear-gradient(135deg, #d3d2fd, #c7c6ee); /* Ensure hover effect matches */
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee);
 }
 
 /* Roles List in Table */

@@ -15,7 +15,7 @@
   margin-bottom: 20px;
   text-align: center;
   color: #333;
-  font-weight: bold; /* Make the title text bold */
+  font-weight: bold;
 }
 
 /* Card Styling */
@@ -44,7 +44,7 @@
 /* Strong Text in Cards */
 .details-card strong {
   color: #444;
-  font-weight: bold; /* Make strong text bold */
+  font-weight: bold;
 }
 
 /* Subheading Styling */
@@ -54,13 +54,13 @@
   margin-bottom: 20px;
   border-bottom: 2px solid #4a90e2;
   padding-bottom: 10px;
-  font-weight: bold; /* Make subheading text bold */
+  font-weight: bold;
 }
 
 /* Status Badge Styling */
 .status {
   font-size: 1.2em;
-  font-weight: bold; /* Make status text bold */
+  font-weight: bold;
   padding: 6px 12px;
   border-radius: 5px;
   display: inline-block;
@@ -79,7 +79,7 @@
   font-size: 18px;
   padding: 15px 25px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #9d9ce9, #7c7bd4); /* Default color */
+  background: linear-gradient(135deg, #9d9ce9, #7c7bd4);
   color: white;
   border: none;
   text-align: center;
