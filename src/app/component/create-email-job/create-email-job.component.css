@@ -1,3 +1,4 @@
+/* Container Styling */
 .create-email-job-container {
   max-width: 800px;
   margin: 0 auto;
@@ -7,13 +8,16 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Title Styling */
 .title {
   font-size: 26px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 20px;
   text-align: center;
   color: #333;
 }
 
+/* Form Styling */
 .create-job-form {
   display: flex;
   flex-direction: column;
@@ -38,6 +42,7 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fff;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -54,54 +59,39 @@
   margin-right: 10px;
 }
 
-.error {
-  color: #d9534f;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.success-message {
-  color: #28a745;
-  font-size: 16px;
-  margin-top: 20px;
-  text-align: center;
-}
-
+/* Button Styling */
 button[type="submit"],
 .back-button {
-  background-color: #6c63ff;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 8px;
+  font-size: 18px; /* Larger font size */
+  padding: 18px 38px; /* More padding for bigger buttons */
+  border-radius: 15px; /* Rounded corners */
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #9d9ce9, #7c7bd4); /* Gradient background */
+  color: #fff; /* Text color */
+  border: none; /* Remove borders */
   position: relative;
   overflow: hidden;
 }
 
-button[type="submit"]:disabled {
-  background-color: #e0e0e0;
-  cursor: not-allowed;
-  color: #999;
-}
-
-button[type="submit"]:not(:disabled):hover,
+button[type="submit"]:hover,
 .back-button:hover {
-  background-color: #5a54e2;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee); /* Lighter gradient on hover */
+  transform: translateY(-3px); /* Hover effect for lift */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Shadow on hover */
 }
 
-button[type="submit"]:not(:disabled):active,
+button[type="submit"]:active,
 .back-button:active {
-  background-color: #4a4aeb;
+  background-color: #8e8eec;
   transform: translateY(1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-button[type="submit"]::before {
+button[type="submit"]::before,
+.back-button::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -114,15 +104,37 @@ button[type="submit"]::before {
   transform: translate(-50%, -50%);
 }
 
-button[type="submit"]:hover::before {
+button[type="submit"]:hover::before,
+.back-button:hover::before {
   opacity: 1;
 }
 
 .back-button {
   margin-top: 25px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .button-container {
   text-align: center;
+  gap: 10px; /* Reduced gap between buttons to fully match the spacing */
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button[type="submit"],
+  .back-button {
+    width: 100%;
+    margin-bottom: 10px; /* Add spacing between stacked buttons */
+    font-size: 16px; /* Slightly smaller text for mobile */
+    padding: 14px 20px; /* Adjust padding for mobile */
+  }
+
+  .title {
+    font-size: 22px;
+  }
 }

@@ -94,4 +94,14 @@ export class EmailJobDetailsComponent implements OnInit {
     this.selectedOccurrence = occurrence;
     this.router.navigate(['/occurrence-details', occurrence.uuid]);
   }
+  // New Method: Confirm and delete the email job
+  confirmDelete(): void {
+    if (this.emailJob && confirm('Are you sure you want to delete this email job?')) {
+      this.emailJobService.deleteEmailJob(this.emailJob.uuid!).subscribe(() => {
+        alert('Email Job deleted successfully.');
+        this.router.navigate(['/dashboard']); // Redirect to the dashboard after deletion
+      });
+    }
+  }
+
 }

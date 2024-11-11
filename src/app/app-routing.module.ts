@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { CreateEmailJobComponent } from './component/create-email-job/create-email-job.component';
 import { OccurrenceDetailsComponent } from './component/occurrence-details/occurrence-details.component';
 import { CreateEmailTemplateComponent } from './component/create-email-template/create-email-template.component'; // Import the component
+import {ManageUsersComponent} from "./component/manage-users/manage-users.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,9 +15,10 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'email-job/:uuid', component: EmailJobDetailsComponent, canActivate: [AuthGuard] },
   { path: 'create-email-job', component: CreateEmailJobComponent, canActivate: [AuthGuard] },
-  { path: 'create-email-template', component: CreateEmailTemplateComponent, canActivate: [AuthGuard] }, // Add this route
-  { path: '**', redirectTo: '/login' },
-  { path: 'occurrence-details/:emailJobUuid', component: OccurrenceDetailsComponent, canActivate: [AuthGuard] }
+  { path: 'create-email-template', component: CreateEmailTemplateComponent, canActivate: [AuthGuard] },
+  { path: 'occurrence-details/:emailJobUuid', component: OccurrenceDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'manage-users', component: ManageUsersComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/login' } // Wildcard should be the last route
 ];
 
 @NgModule({

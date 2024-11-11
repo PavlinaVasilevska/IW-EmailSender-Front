@@ -3,6 +3,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   background-color: #eef2f7;
+  background-image: url('https://recordsforce.com/wp-content/uploads/2022/08/envelopes.png');
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -159,3 +160,25 @@
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
+.manage-users-button {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 36px;
+  font-size: 20px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #9d9ce9, #7c7bd4);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.manage-users-button:hover {
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+

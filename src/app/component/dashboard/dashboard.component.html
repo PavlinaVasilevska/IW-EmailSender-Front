@@ -3,16 +3,18 @@
     <h1 class="header-title">Email Jobs</h1>
   </header>
 
-  <!-- Button for Creating Email Templates -->
+  <!-- Button Container with updated Manage Users button -->
   <div class="button-container">
     <button class="create-template-button" (click)="router.navigate(['/create-email-template'])">Create Email Template</button>
+    <button class="create-job-button" (click)="createEmailJob()">Create New Job</button>
+    <button class="manage-users-button" (click)="goToManageUsers()">Manage Users</button>
   </div>
 
   <section *ngIf="emailJobs.length > 0; else noJobs" class="email-jobs-list">
     <ol class="email-jobs-list-ol">
       <li *ngFor="let job of emailJobs" class="email-job-card">
         <div class="card-content">
-          <h3 class="email-template-uuid">Email Job with UUID: {{ job.emailTemplate.uuid }}</h3>
+          <h5 class="email-job-uuid">Email Job with UUID: <span class="uuid-text">{{ job.uuid }}</span></h5>
           <p class="start-date"><strong>Start Date:</strong> {{ job.startDate | date }}</p>
           <p class="end-date"><strong>End Date:</strong> {{ job.endDate ? (job.endDate | date) : 'N/A' }}</p>
           <p class="status"><strong>Status:</strong> {{ job.enabled ? 'Enabled' : 'Disabled' }}</p>
@@ -25,9 +27,6 @@
   <ng-template #noJobs>
     <p class="no-jobs-message">No email jobs available.</p>
   </ng-template>
-
-  <!-- Button for Creating New Email Jobs -->
-  <button class="create-job-button" (click)="router.navigate(['/create-email-job'])">Create New Job</button>
 </div>
 
 <ng-template #loginMessage>

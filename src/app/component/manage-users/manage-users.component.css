@@ -1,0 +1,111 @@
+/* Table Styling */
+table.mat-elevation-z8 {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+}
+
+table.mat-elevation-z8 th, table.mat-elevation-z8 td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table.mat-elevation-z8 th {
+  background-color: #f5f5f5;
+  color: #555;
+  font-weight: bold;
+}
+
+table.mat-elevation-z8 td {
+  color: #333;
+}
+
+table.mat-elevation-z8 tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Spinner and Error Message */
+div[mat-spinner] {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Button Group Styling */
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Space buttons on the left and right */
+  margin-top: 20px;  /* Adds space between the table and buttons */
+  gap: 10px; /* Reduced gap between buttons */
+}
+
+.button-group button {
+  font-size: 18px; /* Increased font size for bigger text */
+  padding: 18px 38px; /* Increased padding for bigger buttons */
+  border-radius: 15px; /* Match the rounded corners */
+  font-weight: 500;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #9d9ce9, #7c7bd4); /* Match the gradient background */
+  color: #fff; /* Text color for buttons */
+  border: none; /* Remove borders */
+}
+
+.button-group button:hover {
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee); /* Lighter gradient on hover */
+  transform: translateY(-3px); /* Button hover effect */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+/* Optional: Additional customization for specific button colors */
+.button-group button[color="primary"]:hover,
+.button-group button[color="accent"]:hover {
+  background: linear-gradient(135deg, #d3d2fd, #c7c6ee); /* Ensure hover effect matches */
+}
+
+/* Roles List in Table */
+mat-cell ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+mat-cell li {
+  font-size: 14px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  table.mat-elevation-z8 th, table.mat-elevation-z8 td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .button-group button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .error-message {
+    font-size: 14px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}

@@ -1,6 +1,7 @@
+/* Background and Layout */
 body {
   background: linear-gradient(135deg, #ece9e6 0%, #ffffff 100%);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,17 +15,71 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #f3f4f6;
+  background-image: url('https://recordsforce.com/wp-content/uploads/2022/08/envelopes.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 20px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }
 
+/* Welcome Message Styling */
+.welcome-message {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #6d7ade, #a3b7ed);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-message::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s ease;
+  z-index: 0;
+}
+
+.welcome-message:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.welcome-message:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  color: #f3f4f6;
+}
+
+.welcome-message h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-message p {
+  margin: 5px 0;
+  font-size: 1.2rem;
+}
+
+/* Login Card Styling */
 .login-card {
   width: 100%;
-  max-width: 500px;
-  padding: 40px 60px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  padding: 60px 80px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -51,6 +106,7 @@ body {
   align-items: center;
 }
 
+/* Form Fields Styling */
 .mat-form-field {
   width: 100%;
   max-width: 400px;
@@ -86,6 +142,7 @@ body {
   color: #e53e3e;
 }
 
+/* Error Message Styling */
 .error-message {
   background-color: #fdecea;
   color: #b71c1c;
@@ -109,6 +166,7 @@ body {
   }
 }
 
+/* Button Styling */
 .login-button {
   width: 100%;
   max-width: 400px;
@@ -135,6 +193,66 @@ body > div > div > mat-card > mat-card-header > div > mat-card-title {
   padding: 20px;
 }
 
-mat-form-field{
+mat-form-field {
   width: 300px !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 40px;
+  }
+
+  .welcome-message h1 {
+    font-size: 2rem;
+  }
+
+  .welcome-message p {
+    font-size: 1rem;
+  }
+
+  .login-card mat-card-title {
+    font-size: 1.8rem;
+  }
+
+  .mat-form-field {
+    max-width: 100%;
+  }
+
+  .login-button {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 15px;
+    background-size: cover;
+  }
+
+  .login-card {
+    padding: 30px;
+  }
+
+  .welcome-message h1 {
+    font-size: 1.5rem;
+  }
+
+  .welcome-message p {
+    font-size: 0.9rem;
+  }
+
+  .login-card mat-card-title {
+    font-size: 1.5rem;
+  }
+
+  .login-button {
+    font-size: 1rem;
+    height: 45px;
+  }
+
+  .mat-form-field input.mat-input-element {
+    font-size: 1.2rem;
+  }
 }

@@ -1,5 +1,6 @@
 <div *ngIf="emailJob; else loading" class="email-job-details">
   <h1 class="title">Email Job Details</h1>
+
   <div class="details-card">
     <p><strong>UUID:</strong> {{ emailJob.uuid }}</p>
     <p><strong>Start Date:</strong> {{ emailJob.startDate | date: 'short' }}</p>
@@ -10,10 +11,12 @@
     <p><strong>Receivers:</strong> {{ emailJob.receivers }}</p>
     <p><strong>Frequency:</strong> {{ getFrequencyDisplay(emailJob.frequency) }}</p>
 
-    <button class="view-button" (click)="toggleOccurrencesDetails()">
-      {{ showOccurrences ? 'Cancel Occurrence' : 'View Occurrences Details' }}
-    </button>
-
+    <!-- View Button -->
+    <div class="view-button-container">
+      <button class="view-button" (click)="toggleOccurrencesDetails()">
+        {{ showOccurrences ? 'Cancel Occurrence' : 'View Occurrences Details' }}
+      </button>
+    </div>
 
     <div *ngIf="showOccurrences">
       <div *ngIf="occurrences && occurrences.length > 0; else noOccurrencesMessage">
@@ -30,7 +33,9 @@
                 {{ occurrence.status }}
               </span>
             </p>
-            <p *ngIf="occurrence.status !== StatusEnum.SUCCESS && occurrence.errorDescription"><strong>Error Description:</strong> {{ occurrence.errorDescription }}</p>
+            <p *ngIf="occurrence.status !== StatusEnum.SUCCESS && occurrence.errorDescription">
+              <strong>Error Description:</strong> {{ occurrence.errorDescription }}
+            </p>
           </li>
         </ul>
       </div>
@@ -40,10 +45,12 @@
     </div>
   </div>
 
-
-  <button class="back-button" (click)="backToDashboard()">Back to Dashboard</button>
+  <!-- Button Section for Delete and Back with Adjusted Positions -->
+  <div class="button-container">
+    <button class="back-button" (click)="backToDashboard()">Back to Dashboard</button>
+    <button class="delete-button" (click)="confirmDelete()">Delete Email Job</button>
+  </div>
 </div>
-
 
 <ng-template #loading>
   <div class="loading">
