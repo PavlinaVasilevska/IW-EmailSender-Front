@@ -7,7 +7,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 .title {
   font-size: 26px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,7 +14,6 @@
   text-align: center;
   color: #333;
 }
-
 
 .create-job-form {
   display: flex;
@@ -57,7 +55,6 @@
 .form-group input[type="checkbox"] {
   margin-right: 10px;
 }
-
 
 button[type="submit"],
 .back-button {
@@ -118,6 +115,15 @@ button[type="submit"]:hover::before,
   gap: 10px;
 }
 
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.error p {
+  margin: 0;
+}
 
 @media (max-width: 600px) {
   .button-container {
