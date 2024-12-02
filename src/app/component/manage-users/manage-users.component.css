@@ -1,4 +1,4 @@
-/* Table Styling */
+
 table.mat-elevation-z8 {
   width: 100%;
   border-collapse: collapse;
@@ -27,7 +27,7 @@ table.mat-elevation-z8 tr:hover {
   background-color: #f9f9f9;
 }
 
-/* Spinner and Error Message */
+
 div[mat-spinner] {
   text-align: center;
   margin: 20px 0;
@@ -41,7 +41,7 @@ div[mat-spinner] {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Button Group Styling */
+
 .button-group {
   display: flex;
   justify-content: space-between;
@@ -74,7 +74,7 @@ div[mat-spinner] {
   background: linear-gradient(135deg, #d3d2fd, #c7c6ee);
 }
 
-/* Roles List in Table */
+
 mat-cell ul {
   list-style: none;
   padding: 0;
@@ -87,7 +87,7 @@ mat-cell li {
   color: #333;
 }
 
-/* Responsive Styling */
+
 @media (max-width: 600px) {
   .button-group {
     flex-direction: column;
@@ -108,4 +108,5 @@ mat-cell li {
     font-size: 14px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+
 }

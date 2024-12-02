@@ -21,17 +21,17 @@
     <button type="submit" [disabled]="emailTemplateForm.invalid">Create Template</button>
   </form>
 
-  <!-- Success Message -->
+
   <div *ngIf="successMessage" class="success-message">
     {{ successMessage }}
   </div>
 
-  <!-- Error Message -->
+
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
   </div>
 
-  <!-- Back to Dashboard Button -->
+
   <div class="button-container">
     <button (click)="goToDashboard()" class="back-button">Back to Dashboard</button>
   </div>

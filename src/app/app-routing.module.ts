@@ -8,6 +8,7 @@ import { CreateEmailJobComponent } from './component/create-email-job/create-ema
 import { OccurrenceDetailsComponent } from './component/occurrence-details/occurrence-details.component';
 import { CreateEmailTemplateComponent } from './component/create-email-template/create-email-template.component'; // Import the component
 import {ManageUsersComponent} from "./component/manage-users/manage-users.component";
+import {EditUserComponent} from "./component/edit-user/edit-user.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'create-email-template', component: CreateEmailTemplateComponent, canActivate: [AuthGuard] },
   { path: 'occurrence-details/:emailJobUuid', component: OccurrenceDetailsComponent, canActivate: [AuthGuard] },
   { path: 'manage-users', component: ManageUsersComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/login' } // Wildcard should be the last route
+  { path: 'edit-user/:uuid', component: EditUserComponent, canActivate: [AuthGuard]},
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

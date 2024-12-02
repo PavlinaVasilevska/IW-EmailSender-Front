@@ -1,29 +1,40 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http'; // Import withFetch here
+
+// Angular Material Modules
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';  // Add MatTableModule
-import { MatIconModule } from '@angular/material/icon';    // Add MatIconModule
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Add MatProgressSpinnerModule
-import { RouterModule } from '@angular/router';
-import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select'; // Added MatSelectModule for dropdown menus
+import { MatCheckboxModule } from '@angular/material/checkbox'; // For any checkboxes (e.g., roles)
+
+
+// Routing Module
 import { AppRoutingModule } from './app-routing.module';
+
+// Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { AuthService } from './services/auth.service';
 import { EmailJobDetailsComponent } from './component/email-job-details/email-job-details.component';
-import { DatePipe } from '@angular/common';
 import { CreateEmailJobComponent } from './component/create-email-job/create-email-job.component';
 import { OccurrenceDetailsComponent } from './component/occurrence-details/occurrence-details.component';
 import { CreateEmailTemplateComponent } from './component/create-email-template/create-email-template.component';
 import { ManageUsersComponent } from './component/manage-users/manage-users.component';
-import { AddUserComponent } from './component/add-user/add-user.component';
+import { EditUserComponent } from './component/edit-user/edit-user.component';
+
+// Services and Interceptors
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -35,26 +46,30 @@ import { AddUserComponent } from './component/add-user/add-user.component';
     OccurrenceDetailsComponent,
     CreateEmailTemplateComponent,
     ManageUsersComponent,
-    AddUserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     AppRoutingModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    // Angular Material Modules
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatTableModule,           // Add MatTableModule for tables
-    MatIconModule,            // Add MatIconModule for icons (if used in the template)
-    RouterModule,
-    MatProgressSpinnerModule
+    MatTableModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatSelectModule, // Added for dropdown menus
+    MatCheckboxModule, // Added for checkboxes, such as roles
   ],
   providers: [
     AuthService,
-    provideHttpClient(withInterceptors([AuthInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([AuthInterceptor])), // Enable withFetch here
     DatePipe
   ],
   bootstrap: [AppComponent]

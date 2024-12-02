@@ -13,7 +13,7 @@ export class ManageUsersComponent implements OnInit {
   loading: boolean = true;
   error: string = '';
 
-  displayedColumns: string[] = ['uuid', 'username', 'email', 'roles', 'actions'];
+  displayedColumns: string[] = ['uuid', 'username', 'name','surname','email', 'roles', 'actions'];
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -52,7 +52,8 @@ export class ManageUsersComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
-  addNewUser(): void {
-    this.router.navigate(['/add-user']);  // Adjust the route as per your app structure
+
+  editUser(uuid: string): void {
+    this.router.navigate(['/edit-user', uuid]);
   }
 }

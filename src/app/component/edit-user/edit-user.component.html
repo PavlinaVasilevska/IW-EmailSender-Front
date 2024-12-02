@@ -1,0 +1,97 @@
+<form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" class="edit-user-form">
+  <!-- UUID Field (Read-Only) -->
+  <div class="form-group">
+    <label for="uuid" class="form-label">UUID</label>
+    <input
+      id="uuid"
+      formControlName="uuid"
+      class="form-control"
+      readonly
+      aria-readonly="true"
+    />
+  </div>
+
+  <!-- Username Field -->
+  <div class="form-group">
+    <label for="username" class="form-label">Username</label>
+    <input
+      id="username"
+      formControlName="username"
+      class="form-control"
+      placeholder="Update username"
+    />
+  </div>
+
+  <!-- Name Field -->
+  <div class="form-group">
+    <label for="name" class="form-label">First Name</label>
+    <input
+      id="name"
+      formControlName="name"
+      class="form-control"
+      placeholder="Update first name"
+    />
+  </div>
+
+  <!-- Surname Field -->
+  <div class="form-group">
+    <label for="surname" class="form-label">Last Name</label>
+    <input
+      id="surname"
+      formControlName="surname"
+      class="form-control"
+      placeholder="Update last name"
+    />
+  </div>
+
+  <!-- Email Field -->
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <input
+      id="email"
+      formControlName="email"
+      class="form-control"
+      type="email"
+      placeholder="Update email"
+    />
+  </div>
+
+  <!-- Password Field (Visible and Editable) -->
+  <div class="form-group">
+    <label for="password" class="form-label">Password</label>
+    <input
+      id="password"
+      type="text"
+      formControlName="password"
+      class="form-control"
+    />
+  </div>
+
+  <!-- Role Field -->
+  <div class="form-group">
+    <label for="roleName" class="form-label">Roles</label>
+    <input
+      id="roleName"
+      formControlName="roleName"
+      class="form-control"
+      placeholder="Update roles separated by commas"
+    />
+  </div>
+
+  <!-- Buttons Section -->
+  <div class="form-buttons">
+    <button
+      type="submit"
+      class="btn btn-primary"
+    >
+      Update
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary back-button"
+      (click)="goBack()"
+    >
+      Back
+    </button>
+  </div>
+</form>

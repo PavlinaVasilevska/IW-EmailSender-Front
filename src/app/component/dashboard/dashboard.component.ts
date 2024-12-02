@@ -45,9 +45,9 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/create-email-job']);
   }
 
-  // This method is for navigating to the "Manage Users" page
+
   goToManageUsers(): void {
-    console.log("Navigating to Manage Users...");  // Add this for debugging
+    console.log("Navigating to Manage Users...");
     this.router.navigate(['/manage-users']);
   }
 
