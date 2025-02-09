@@ -1,4 +1,4 @@
-/* Container styling */
+
 .register-form-container {
   max-width: 800px;
   margin: 0 auto;
@@ -8,7 +8,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Title styling */
+
 .title {
   font-size: 26px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,7 +17,7 @@
   color: #333;
 }
 
-/* Form styling */
+
 .register-form {
   display: flex;
   flex-direction: column;
@@ -61,7 +61,6 @@
 
 }
 
-/* Button styling */
 button[type="submit"],
 button[type="button"] {
   font-size: 18px;
