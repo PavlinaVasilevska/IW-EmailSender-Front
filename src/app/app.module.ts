@@ -35,6 +35,7 @@ import { EditUserComponent } from './component/edit-user/edit-user.component';
 // Services and Interceptors
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthService } from './services/auth.service';
+import { RegisterUserComponent } from './component/register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AuthService } from './services/auth.service';
     CreateEmailTemplateComponent,
     ManageUsersComponent,
     EditUserComponent,
+    RegisterUserComponent,
   ],
   imports: [
     BrowserModule,

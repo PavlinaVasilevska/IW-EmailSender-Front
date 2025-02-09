@@ -4,7 +4,7 @@
   <form [formGroup]="emailJobForm" (ngSubmit)="onSubmit()" class="create-job-form">
     <div class="form-group">
       <label for="startDate">Start Date:</label>
-      <input type="date" id="startDate" formControlName="startDate" class="date-input"/>
+      <input type="date" id="startDate" formControlName="startDate" class="date-input" />
       <div *ngIf="emailJobForm.get('startDate')?.invalid && (emailJobForm.get('startDate')?.touched || emailJobForm.get('startDate')?.dirty)" class="error">
         <p *ngIf="emailJobForm.get('startDate')?.errors?.['required']">Start Date is required.</p>
       </div>
@@ -12,7 +12,7 @@
 
     <div class="form-group">
       <label for="endDate">End Date:</label>
-      <input type="date" id="endDate" formControlName="endDate" class="date-input"/>
+      <input type="date" id="endDate" formControlName="endDate" class="date-input" />
     </div>
 
     <div class="form-group">
@@ -64,11 +64,9 @@
     <button type="submit" [disabled]="emailJobForm.invalid">Create Job</button>
   </form>
 
-
   <div *ngIf="successMessage" class="success-message">
     {{ successMessage }}
   </div>
-
 
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}

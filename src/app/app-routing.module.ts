@@ -9,6 +9,7 @@ import { OccurrenceDetailsComponent } from './component/occurrence-details/occur
 import { CreateEmailTemplateComponent } from './component/create-email-template/create-email-template.component'; // Import the component
 import {ManageUsersComponent} from "./component/manage-users/manage-users.component";
 import {EditUserComponent} from "./component/edit-user/edit-user.component";
+import {RegisterUserComponent} from "./component/register-user/register-user.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'occurrence-details/:emailJobUuid', component: OccurrenceDetailsComponent, canActivate: [AuthGuard] },
   { path: 'manage-users', component: ManageUsersComponent, canActivate: [AuthGuard] },
   { path: 'edit-user/:uuid', component: EditUserComponent, canActivate: [AuthGuard]},
+  {path: 'register-user',component:RegisterUserComponent, canActivate:[AuthGuard]},
   { path: '**', redirectTo: '/login' }
 ];
 

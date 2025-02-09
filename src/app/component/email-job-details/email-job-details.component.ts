@@ -17,6 +17,8 @@ export class EmailJobDetailsComponent implements OnInit {
   showOccurrences = false;
   errorMessage: string | null = null;
   StatusEnum = StatusEnum;
+  showDeleteConfirmation: boolean = false;
+  successMessage: string | null = null; // To store success message after deletion
 
   constructor(
     private emailJobService: EmailJobService,
@@ -47,6 +49,7 @@ export class EmailJobDetailsComponent implements OnInit {
     }
   }
 
+  // Occurrences Methods
   viewOccurrencesDetails(): void {
     if (this.emailJob) {
       this.occurrenceService.getOccurrencesByEmailJob(this.emailJob.uuid).subscribe(
@@ -72,6 +75,7 @@ export class EmailJobDetailsComponent implements OnInit {
       this.viewOccurrencesDetails();
     } else {
       this.showOccurrences = false;
+      this.occurrences = [];  // Clear occurrences when toggling off
       this.errorMessage = null;
     }
   }
@@ -95,13 +99,30 @@ export class EmailJobDetailsComponent implements OnInit {
     this.router.navigate(['/occurrence-details', occurrence.uuid]);
   }
 
+  // Delete Confirmation Methods
+  toggleDeleteConfirmation(): void {
+    this.showDeleteConfirmation = !this.showDeleteConfirmation;
+  }
+
   confirmDelete(): void {
-    if (this.emailJob && confirm('Are you sure you want to delete this email job?')) {
-      this.emailJobService.deleteEmailJob(this.emailJob.uuid!).subscribe(() => {
-        alert('Email Job deleted successfully.');
-        this.router.navigate(['/dashboard']); // Redirect to the dashboard after deletion
-      });
+    if (this.emailJob) {
+      this.emailJobService.deleteEmailJob(this.emailJob.uuid!).subscribe(
+        () => {
+          this.successMessage = 'Email Job deleted successfully.'; // Display the success message
+          setTimeout(() => {
+            this.router.navigate(['/dashboard']); // Redirect to the dashboard after deletion
+          }, 2000); // Give the user time to read the success message
+        },
+        error => {
+          console.error('Error deleting email job', error);
+          alert('Failed to delete the email job.');
+          this.showDeleteConfirmation = false; // Close the confirmation dialog if deletion fails
+        }
+      );
     }
   }
 
+  cancelDelete(): void {
+    this.showDeleteConfirmation = false;
+  }
 }

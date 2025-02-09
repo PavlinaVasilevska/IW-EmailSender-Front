@@ -11,9 +11,12 @@ import { UserDTO } from '../../models/user.dto.model';
 export class ManageUsersComponent implements OnInit {
   users: UserDTO[] = [];
   loading: boolean = true;
-  error: string = '';
+  errorMessage: string = '';
+  successMessage: string = '';
+  showDeleteConfirmation: boolean = false; // Flag for modal visibility
+  userToDelete: UserDTO | null = null; // Store user to delete
 
-  displayedColumns: string[] = ['uuid', 'username', 'name','surname','email', 'roles', 'actions'];
+  displayedColumns: string[] = ['uuid', 'username', 'name', 'surname', 'email', 'roles', 'actions'];
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -28,30 +31,50 @@ export class ManageUsersComponent implements OnInit {
         this.loading = false;
       },
       (err) => {
-        this.error = 'Failed to load users';
+        this.errorMessage = 'Failed to load users';
         this.loading = false;
       }
     );
   }
 
   deleteUser(uuid: string): void {
-    if (confirm('Are you sure you want to delete this user?')) {
-      this.userService.deleteUser(uuid).subscribe(
+    // Find the user to delete
+    this.userToDelete = this.users.find(user => user.uuid === uuid) || null;
+    // Show the confirmation modal
+    this.showDeleteConfirmation = true;
+  }
+
+  confirmDelete(): void {
+    if (this.userToDelete) {
+      this.userService.deleteUser(this.userToDelete.uuid).subscribe(
         () => {
-          this.users = this.users.filter(user => user.uuid !== uuid);
-          alert('User deleted successfully');
+          // Remove the deleted user from the list
+          this.users = this.users.filter(user => user.uuid !== this.userToDelete?.uuid);
+          this.showDeleteConfirmation = false; // Close the modal
+          this.successMessage = 'User deleted successfully'; // Show success message
+          setTimeout(() => this.successMessage = '', 3000); // Hide message after 3 seconds
         },
         (error) => {
-          this.error = 'Error deleting user';
+          this.errorMessage = 'Error deleting user'; // Show error message
+          this.showDeleteConfirmation = false; // Close the modal
+          setTimeout(() => this.errorMessage = '', 3000); // Hide message after 3 seconds
         }
       );
     }
+  }
+
+  cancelDelete(): void {
+    this.showDeleteConfirmation = false; // Close the modal without deleting
+    this.userToDelete = null; // Clear the user to delete
   }
 
   navigateToDashboard(): void {
     this.router.navigate(['/dashboard']);
   }
 
+  navigateToRegisterUser() {
+    this.router.navigate(['/register-user']); // Adjust route as needed
+  }
 
   editUser(uuid: string): void {
     this.router.navigate(['/edit-user', uuid]);

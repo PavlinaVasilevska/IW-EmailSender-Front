@@ -1,0 +1,61 @@
+<div class="register-form-container">
+  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" class="register-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="Enter username" [(ngModel)]="user.username" name="username" required />
+      <mat-error *ngIf="registerForm.controls['username']?.invalid && registerForm.controls['username']?.touched">
+        Username is mandatory and cannot be blank.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Enter first name" [(ngModel)]="user.name" name="name" required />
+      <mat-error *ngIf="registerForm.controls['name']?.invalid && registerForm.controls['name']?.touched">
+        Name is mandatory and cannot be blank.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Surname</mat-label>
+      <input matInput placeholder="Enter surname" [(ngModel)]="user.surname" name="surname" required />
+      <mat-error *ngIf="registerForm.controls['surname']?.invalid && registerForm.controls['surname']?.touched">
+        Surname is mandatory and cannot be blank.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Enter email" [(ngModel)]="user.email" name="email" required />
+      <mat-error *ngIf="registerForm.controls['email']?.invalid && registerForm.controls['email']?.touched">
+        A valid email is mandatory and cannot be blank.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Enter password" [(ngModel)]="user.password" name="password" required />
+      <mat-error *ngIf="registerForm.controls['password']?.invalid && registerForm.controls['password']?.touched">
+        Password is mandatory and cannot be blank.
+        Password must be between 6 and 20 characters.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select [(ngModel)]="user.roles" name="roles" multiple required>
+        <mat-option *ngFor="let role of roles" [value]="{ roleName: role }">{{ role }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="registerForm.controls['roles']?.invalid && registerForm.controls['roles']?.touched">
+        Role is mandatory and cannot be left empty.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+    <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+
+    <!-- Display Success or Error Message -->
+    <div *ngIf="isSuccess" class="success-message">{{ successMessage }}</div>
+    <div *ngIf="isError" class="error-message">{{ errorMessage }}</div>
+  </form>
+</div>

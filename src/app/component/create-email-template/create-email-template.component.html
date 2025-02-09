@@ -5,7 +5,10 @@
     <div class="form-group">
       <label for="subject">Subject:</label>
       <input type="text" id="subject" formControlName="subject" />
-      <div *ngIf="emailTemplateForm.get('subject')?.invalid && (emailTemplateForm.get('subject')?.touched || emailTemplateForm.get('subject')?.dirty)" class="error">
+      <div
+        *ngIf="emailTemplateForm.get('subject')?.invalid &&
+              (emailTemplateForm.get('subject')?.touched || emailTemplateForm.get('subject')?.dirty)"
+        class="error">
         <p *ngIf="emailTemplateForm.get('subject')?.errors?.['required']">Subject is required.</p>
       </div>
     </div>
@@ -13,7 +16,10 @@
     <div class="form-group">
       <label for="body">Body:</label>
       <textarea id="body" formControlName="body"></textarea>
-      <div *ngIf="emailTemplateForm.get('body')?.invalid && (emailTemplateForm.get('body')?.touched || emailTemplateForm.get('body')?.dirty)" class="error">
+      <div
+        *ngIf="emailTemplateForm.get('body')?.invalid &&
+              (emailTemplateForm.get('body')?.touched || emailTemplateForm.get('body')?.dirty)"
+        class="error">
         <p *ngIf="emailTemplateForm.get('body')?.errors?.['required']">Body is required.</p>
       </div>
     </div>
@@ -21,16 +27,13 @@
     <button type="submit" [disabled]="emailTemplateForm.invalid">Create Template</button>
   </form>
 
-
-  <div *ngIf="successMessage" class="success-message">
+  <div *ngIf="successMessage" class="message success">
     {{ successMessage }}
   </div>
 
-
-  <div *ngIf="errorMessage" class="error-message">
+  <div *ngIf="errorMessage" class="message error">
     {{ errorMessage }}
   </div>
-
 
   <div class="button-container">
     <button (click)="goToDashboard()" class="back-button">Back to Dashboard</button>

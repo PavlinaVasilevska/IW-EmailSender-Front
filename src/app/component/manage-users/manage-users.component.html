@@ -1,3 +1,4 @@
+<!-- Table displaying users -->
 <table mat-table [dataSource]="users" class="mat-elevation-z8">
   <ng-container matColumnDef="uuid">
     <th mat-header-cell *matHeaderCellDef> UUID </th>
@@ -9,18 +10,15 @@
     <td mat-cell *matCellDef="let user"> {{ user.username }} </td>
   </ng-container>
 
-
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
     <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
   </ng-container>
 
-
   <ng-container matColumnDef="surname">
     <th mat-header-cell *matHeaderCellDef> Surname </th>
     <td mat-cell *matCellDef="let user"> {{ user.surname }} </td>
   </ng-container>
-
 
   <ng-container matColumnDef="email">
     <th mat-header-cell *matHeaderCellDef> Email </th>
@@ -36,12 +34,11 @@
     </td>
   </ng-container>
 
-
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let user">
       <button mat-button (click)="deleteUser(user.uuid)">Delete</button>
-      <button mat-button (click)="editUser(user.uuid)">Edit</button> <!-- Edit Button -->
+      <button mat-button (click)="editUser(user.uuid)">Edit</button>
     </td>
   </ng-container>
 
@@ -49,7 +46,28 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
+<!-- Modal for delete confirmation -->
+<div *ngIf="showDeleteConfirmation" class="delete-confirmation-modal">
+  <div class="modal-content">
+    <h3>Are you sure you want to delete this user?</h3>
+    <p>This action cannot be undone.</p>
+    <div class="modal-buttons">
+      <button class="confirm-button" (click)="confirmDelete()">Yes, Delete</button>
+      <button class="cancel-button" (click)="cancelDelete()">Cancel</button>
+    </div>
+  </div>
+</div>
 
+<!-- Success and Error Messages -->
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<!-- Buttons for navigating -->
 <div class="button-group">
   <button mat-raised-button color="primary" (click)="navigateToDashboard()">Back to Dashboard</button>
+  <button mat-raised-button color="accent" (click)="navigateToRegisterUser()">Register a New User</button>
 </div>

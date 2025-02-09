@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {EmailTemplateService} from "../../services/email-template.service";
-
+import { EmailTemplateService } from "../../services/email-template.service";
 
 @Component({
   selector: 'app-create-email-template',

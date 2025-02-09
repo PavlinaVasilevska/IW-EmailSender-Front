@@ -1,6 +1,11 @@
 <div *ngIf="emailJob; else loading" class="email-job-details">
   <h1 class="title">Email Job Details</h1>
 
+  <!-- Display success message after deletion -->
+  <div *ngIf="successMessage" class="success-message">
+    <p>{{ successMessage }}</p>
+  </div>
+
   <div class="details-card">
     <p><strong>UUID:</strong> {{ emailJob.uuid }}</p>
     <p><strong>Start Date:</strong> {{ emailJob.startDate | date: 'short' }}</p>
@@ -11,10 +16,10 @@
     <p><strong>Receivers:</strong> {{ emailJob.receivers }}</p>
     <p><strong>Frequency:</strong> {{ getFrequencyDisplay(emailJob.frequency) }}</p>
 
-    <!-- View Button -->
+    <!-- View Occurrences Button -->
     <div class="view-button-container">
       <button class="view-button" (click)="toggleOccurrencesDetails()">
-        {{ showOccurrences ? 'Cancel Occurrence' : 'View Occurrences Details' }}
+        {{ showOccurrences ? 'Cancel Occurrence' : 'View Occurrence Details' }}
       </button>
     </div>
 
@@ -48,10 +53,23 @@
   <!-- Button Section for Delete and Back -->
   <div class="button-container">
     <button class="back-button" (click)="backToDashboard()">Back to Dashboard</button>
-    <button class="delete-button" (click)="confirmDelete()">Delete Email Job</button>
+    <button class="delete-button" (click)="toggleDeleteConfirmation()">Delete Email Job</button>
   </div>
 </div>
 
+<!-- Delete Confirmation Modal -->
+<div *ngIf="showDeleteConfirmation" class="delete-confirmation-modal">
+  <div class="modal-content">
+    <h3>Are you sure you want to delete this email job?</h3>
+    <p>This action cannot be undone.</p>
+    <div class="modal-buttons">
+      <button class="confirm-button" (click)="confirmDelete()">Yes, Delete</button>
+      <button class="cancel-button" (click)="cancelDelete()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Loading Template -->
 <ng-template #loading>
   <div class="loading">
     <p>Loading email job details...</p>
